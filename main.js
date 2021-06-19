@@ -1,8 +1,5 @@
 
 // Rock Paper Scissors
-let playerChoice = prompt("Rock, Paper, Scissors?").toLowerCase();
-let computerChoice = computerPlay().toLowerCase();
-
 
 function computerPlay() {
     const compChoices = ["rock", "paper", "scissors" ];
@@ -31,8 +28,17 @@ function playRound( playerChoice, computerChoice) {
 
 
 function game() {
-    playRound(playerChoice, computerChoice);
-    console.log(playRound(playerChoice, computerChoice));
+
+    for(i = 0; i < 5; i++) { 
+        let playerChoice = prompt("Rock, Paper, Scissors?").toLowerCase();
+        let computerChoice = computerPlay().toLowerCase();
+    
+        console.log(playerChoice);
+        console.log(computerChoice);
+
+        playRound(playerChoice, computerChoice);
+        console.log(playRound(playerChoice, computerChoice));
+    }
 }
 
 game();
