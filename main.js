@@ -73,12 +73,26 @@ function game() {
         } else if (gameObject.playerWins == false) {
             return scoreObject = { compScore: compScore + 1, playerScore };
         }
-        };
+    };
+
+        function declareWinner() {
+            let winner = "";
+
+            if(scoreObject.playerScore > scoreObject.compScore) {
+                winner = "Player";
+            } else if(scoreObject.playerScore > scoreObject.compScore) {
+                winner = "Computer"
+            } else {
+                winner = "Draw"
+            }
+            console.log(winner);
+        }
 
         keepScore();
         console.log("The player has " + scoreObject.playerScore + " points.");
         console.log("The computer has " + scoreObject.compScore + " points.");
     }
+    declareWinner();
 }
 
 game();
