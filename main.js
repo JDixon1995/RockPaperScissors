@@ -1,9 +1,17 @@
 
 // Rock Paper Scissors
-// Global Variables
-let playerScore = 0;
-let compScore = 0;
 
+//Game State
+let gameObject = {
+    message : "placeholder",
+    playerWins : null
+};
+let scoreObject = {
+    playerScore : 0,
+    compScore : 0
+};
+console.log("The player score is " + scoreObject.playerScore + " points.");
+console.log("The computer score is " + scoreObject.compScore + " points.");
 
 function computerPlay() {
     const compChoices = ["rock", "paper", "scissors" ];
@@ -13,45 +21,63 @@ function computerPlay() {
 
 function playRound( playerChoice, computerChoice) {
 
+
     if (playerChoice === computerChoice) {
-        return "Tie round.";
+        gameObject.message = "Tie Rounds";
+        gameObject.playerWins = null;
     } else if ( playerChoice == "rock" && computerChoice == "scissors") {
-        playerScore = playerScore + 1;
-        return "You win! Rock smashes scissors.";
+        gameObject.message = "You win! Rock smashes scissors.";
+        gameObject.playerWins = true;
     } else if ( playerChoice == "rock" && computerChoice == "paper") {
-        compScore = compScore + 1;
-        return "You lose. Paper covers rock.";
+        gameObject.message = "You lose. Paper covers rock.";
+        gameObject.playerWins = false;
     } else if ( playerChoice == "paper" && computerChoice == "scissors") {
-        compScore = compScore + 1;
-        return "You lose. Scissors cuts paper.";
+        gameObject.message = "You lose. Scissors cuts paper.";
+        gameObject.playerWins = false;
     } else if ( playerChoice == "paper" && computerChoice == "rock") {
-        playerScore = playerScore + 1;
-        return "You win! Paper covers rock.";
+        gameObject.message = "You win! Paper covers rock.";
+        gameObject.playerWins = true;
     } else if ( playerChoice == "scissors" && computerChoice == "rock") {
-        compScore = compScore + 1;
-        return "You lose. Rock smashes scissors.";
+        gameObject.message = "You lose. Rock smashes scissors.";
+        gameObject.playerWins = false;
     } else if ( playerChoice == "scissors" && computerChoice == "paper") {
-        playerScore = playerScore + 1;
-        return "You win! Scissors cuts paper.";
+        gameObject.message ="You win! Scissors cuts paper.";
+        gameObject.playerWins = true;
     }
+    return gameObject;
 }
 
 
 function game() {
 
-    for(i = 0; i < 5; i++) { 
+
+
+    for(i = 0; i < 5; i++) {
+        
         let playerChoice = prompt("Rock, Paper, Scissors?").toLowerCase();
         let computerChoice = computerPlay().toLowerCase();
-    
         console.log(playerChoice);
         console.log(computerChoice);
 
         playRound(playerChoice, computerChoice);
-        console.log(playRound(playerChoice, computerChoice));
 
-        console.log("Player has " + playerScore + " points.");
-        console.log("Computer has " + compScore + " points.");
 
+        function keepScore() {
+
+            const { compScore, playerScore } = scoreObject;
+            let result = playRound(playerChoice, computerChoice);
+            console.log("Result of round is " + gameObject.playerWins);
+
+        if (gameObject.playerWins == true) {
+            return scoreObject = { compScore, playerScore: playerScore + 1};
+        } else if (gameObject.playerWins == false) {
+            return scoreObject = { compScore: compScore + 1, playerScore };
+        }
+        };
+
+        keepScore();
+        console.log("The player has " + scoreObject.playerScore + " points.");
+        console.log("The computer has " + scoreObject.compScore + " points.");
     }
 }
 
