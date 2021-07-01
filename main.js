@@ -6,10 +6,12 @@ let gameObject = {
     message : "placeholder",
     playerWins : null
 };
+
 let scoreObject = {
     playerScore : 0,
     compScore : 0
 };
+
 console.log("The player score is " + scoreObject.playerScore + " points.");
 console.log("The computer score is " + scoreObject.compScore + " points.");
 
@@ -47,13 +49,24 @@ function playRound( playerChoice, computerChoice) {
     return gameObject;
 }
 
+function declareWinner(scoreObject) {
+    const { compScore, playerScore} = scoreObject;
+
+    let winner = "";
+    if (scoreObject.playerScore > scoreObject.compScore) {
+        winner = "Player";
+    } else if (scoreObject.compScore > scoreObject.playerScore) {
+        winner = "Computer";
+    }
+    console.log( "The " + winner + " has won the game.");
+}
+
+
 
 function game() {
 
 
-
-    for(i = 0; i < 5; i++) {
-        
+    for(var i = 0; i < 6; i++) {
         let playerChoice = prompt("Rock, Paper, Scissors?").toLowerCase();
         let computerChoice = computerPlay().toLowerCase();
         console.log(playerChoice);
@@ -75,24 +88,11 @@ function game() {
         }
     };
 
-        function declareWinner() {
-            let winner = "";
-
-            if(scoreObject.playerScore > scoreObject.compScore) {
-                winner = "Player";
-            } else if(scoreObject.playerScore > scoreObject.compScore) {
-                winner = "Computer"
-            } else {
-                winner = "Draw"
-            }
-            console.log(winner);
-        }
-
         keepScore();
         console.log("The player has " + scoreObject.playerScore + " points.");
         console.log("The computer has " + scoreObject.compScore + " points.");
     }
-    declareWinner();
 }
 
 game();
+declareWinner(scoreObject);
