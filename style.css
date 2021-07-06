@@ -1,0 +1,16 @@
+button {
+    width: 20%;
+    height: 10%;
+}
+
+#title {
+    text-align: center;
+}
+
+#resultsScreen {
+    text-align: center;
+}
+
+#buttonContainer {
+    text-align: center;
+}

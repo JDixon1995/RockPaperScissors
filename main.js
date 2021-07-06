@@ -12,6 +12,12 @@ let scoreObject = {
     compScore : 0
 };
 
+//Buttons
+const rockButton = document.getElementById("rockButton");
+const paperButton = document.getElementById("paper");
+const scissorsButton = document.getElementById("scissors");
+
+
 console.log("The player score is " + scoreObject.playerScore + " points.");
 console.log("The computer score is " + scoreObject.compScore + " points.");
 
@@ -21,7 +27,7 @@ function computerPlay() {
     return compChoices[random];
 }
 
-function playRound( playerChoice, computerChoice) {
+function playRound(playerChoice, computerChoice) {
 
 
     if (playerChoice === computerChoice) {
@@ -66,14 +72,6 @@ function declareWinner(scoreObject) {
 function game() {
 
 
-    for(var i = 0; i < 6; i++) {
-        let playerChoice = prompt("Rock, Paper, Scissors?").toLowerCase();
-        let computerChoice = computerPlay().toLowerCase();
-        console.log(playerChoice);
-        console.log(computerChoice);
-
-        playRound(playerChoice, computerChoice);
-
 
         function keepScore() {
 
@@ -92,7 +90,11 @@ function game() {
         console.log("The player has " + scoreObject.playerScore + " points.");
         console.log("The computer has " + scoreObject.compScore + " points.");
     }
-}
+
+// Event Listeners
+rockButton.onClick = playRound(playerChoice = "rock");
+paperButton.onClick = playRound(playerChoice = "paper");
+scissorsButton.onClick = playRound(playerChoice = "scissors");
 
 game();
 declareWinner(scoreObject);
