@@ -12,8 +12,14 @@ let scoreObject = {
     compScore : 0
 };
 
-console.log("The player score is " + scoreObject.playerScore + " points.");
-console.log("The computer score is " + scoreObject.compScore + " points.");
+//Results Screen
+playerBanner = document.getElementById("playerScore");
+playerChoiceReadout = document.getElementById("playerChoiceReadout");
+computerBanner = document.getElementById("computerScore");
+computerChoiceReadout = document.getElementById("computerChoiceReadout");
+playerScoreReadout = document.getElementById("playerScore");
+computerScoreReadout = document.getElementById("computerScore");
+resultsReadout = document.getElementById("resultsReadout");
 
 // Buttons
 const rockButton = document.getElementById("rock");
@@ -58,25 +64,27 @@ function declareWinner(scoreObject) {
     const { compScore, playerScore} = scoreObject;
 
     let winner = "";
+
     if (scoreObject.playerScore > scoreObject.compScore) {
         winner = "Player";
     } else if (scoreObject.compScore > scoreObject.playerScore) {
         winner = "Computer";
     }
     console.log( "The " + winner + " has won the game.");
+   
 }
 
 
 
 function game() {
 
-        let playerChoice = "";
         let computerChoice = computerPlay().toLowerCase();
+        playerChoiceReadout.innerHTML = "Player Choice : " + playerChoice;
         console.log(playerChoice);
+        computerChoiceReadout.innerHTML ="Computer Choice: " + computerChoice;
         console.log(computerChoice);
 
         playRound(playerChoice, computerChoice);
-
 
         function keepScore() {
 
@@ -92,14 +100,26 @@ function game() {
     };
 
         keepScore();
+
+        playerScoreReadout.innerHTML = "Player Score : " + scoreObject.playerScore;
         console.log("The player has " + scoreObject.playerScore + " points.");
+        computerScoreReadout.innerHTML = "Computer Score : " + scoreObject.compScore;
         console.log("The computer has " + scoreObject.compScore + " points.");
     }
 
 // Event Listeners
-rockButton.onClick = playRound(playerChoice = "rock");
-paperButton.onClick = playRound(playerChoice = "paper");
-scissorsButton.onClick = playRound(playerChoice = "scissors");
-
-game();
-declareWinner(scoreObject);
+rockButton.addEventListener("click", function(){
+    console.log("You clicked the rock button.");
+    playerChoice = "rock";
+    game(playerChoice);
+})
+paperButton.addEventListener("click", function(){
+    console.log("You clicked the paper button.");
+    playerChoice = "paper";
+    game(playerChoice);
+})
+scissorsButton.addEventListener("click", function(){
+    console.log("You clicked the scissors button.")
+    playerChoice = "scissors";
+    game(playerChoice);
+})
