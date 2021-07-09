@@ -99,8 +99,28 @@ function game() {
         }
     };
 
-        keepScore();
+        function determineRound() {
+            if (gameObject.playerWins == null) {
+                resultsReadout.innerHTML = "Result of Round: Draw."; 
+            } else if (gameObject.playerWins == true) {
+                resultsReadout.innerHTML = "Result of Round: You win that round.";
+            } else if (gameObject.playerWins == false)  {
+                resultsReadout.innerHTML = 
+                "Result of Round: The computer wins that rounds.";
+            }
+        }
 
+        function endGame() {
+            if (scoreObject.playerScore == 5) {
+                alert("You win!");
+            } else if (scoreObject.compScore == 5) {
+                alert("You lost, better luck next time.");
+            } else return
+        }
+
+        keepScore();
+        determineRound();
+        endGame();
         playerScoreReadout.innerHTML = "Player Score : " + scoreObject.playerScore;
         console.log("The player has " + scoreObject.playerScore + " points.");
         computerScoreReadout.innerHTML = "Computer Score : " + scoreObject.compScore;
