@@ -9,7 +9,7 @@ body {
 }
 
 h2 {
-    margin: 10px;
+    margin: 5px;
 }
 
 button {
@@ -23,8 +23,8 @@ button {
 
 p {
     font-size: 20px;
-    margin: 10px;
-    font-size: 1.5rem;
+    margin: 5px;
+    font-size: 1.7rem;
 }
 
 #title {
@@ -34,9 +34,24 @@ p {
 #resultsScreen {
     text-align: center;
     margin-top: 15rem;
+    margin-left: 15rem;
+    padding: 2rem;
+    border: dotted 1px black;
+    width: 50%;
+    height: 30%
 }
 
 #buttonContainer {
     text-align: center;
-    margin-top: 15rem;
+    margin-top: 10rem;
+    margin-left: 15rem;
+    border: solid 1px black;
+    width: 50%;
+    height: 35%;
+}
+
+footer {
+    background-color:grey;
+    height: 6%;
+    margin-top: 7rem;
 }
